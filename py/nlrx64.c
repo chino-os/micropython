@@ -35,13 +35,11 @@
 
 __attribute__((used)) unsigned int nlr_push_tail(nlr_buf_t *nlr);
 
-#if !MICROPY_NLR_OS_WINDOWS
 #if defined(__clang__) || (defined(__GNUC__) && __GNUC__ >= 8)
 #define USE_NAKED 1
 #else
 // On older gcc the equivalent here is to force omit-frame-pointer
 __attribute__((optimize("omit-frame-pointer")))
-#endif
 #endif
 
 #if !defined(USE_NAKED)

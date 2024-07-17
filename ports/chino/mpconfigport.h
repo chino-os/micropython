@@ -28,11 +28,11 @@
 
 // Options to control how MicroPython is built
 
-// Use the minimal starting configuration (disables all optional features).
-#define MICROPY_CONFIG_ROM_LEVEL                (MICROPY_CONFIG_ROM_LEVEL_MINIMUM)
+#define MICROPY_CONFIG_ROM_LEVEL                (MICROPY_CONFIG_ROM_LEVEL_EXTRA_FEATURES)
 
 // Compiler configuration
 #define MICROPY_ENABLE_COMPILER                 (1)
+#define MICROPY_ENABLE_GC                       (1)
 
 // Python internal features
 #define MICROPY_ERROR_REPORTING                 (MICROPY_ERROR_REPORTING_NONE)
@@ -45,3 +45,9 @@ typedef intptr_t mp_off_t;
 
 // Need to provide a declaration/definition of alloca()
 #include <alloca.h>
+
+#define MP_STATE_PORT MP_STATE_VM
+
+// board specifics
+#define MICROPY_PY_SYS_PLATFORM "Chino OS"
+#define MICROPY_BANNER_MACHINE "Chino OS"

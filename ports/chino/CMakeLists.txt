@@ -43,17 +43,18 @@ set(MICROPY_SOURCE_PORT
 )
 list(TRANSFORM MICROPY_SOURCE_PORT PREPEND ${MICROPY_PORT_DIR}/)
 
-#set(MICROPY_SOURCE_SHARED
-#    libc/printf.c
-#    readline/readline.c
-#    runtime/interrupt_char.c
-#    runtime/mpirq.c
-#    runtime/pyexec.c
-#    runtime/stdout_helpers.c
-#    timeutils/timeutils.c
-#)
-#list(TRANSFORM MICROPY_SOURCE_SHARED PREPEND ${MICROPY_DIR}/shared/)
-#
+set(MICROPY_SOURCE_SHARED
+    libc/printf.c
+    readline/readline.c
+    runtime/interrupt_char.c
+    runtime/mpirq.c
+    runtime/pyexec.c
+    runtime/stdout_helpers.c
+    runtime/sys_stdio_mphal.c
+    timeutils/timeutils.c
+)
+list(TRANSFORM MICROPY_SOURCE_SHARED PREPEND ${MICROPY_DIR}/shared/)
+
 #set(MICROPY_SOURCE_LIB
 #    oofatfs/ff.c
 #    oofatfs/ffunicode.c
@@ -79,6 +80,8 @@ target_include_directories(${MICROPY_TARGET} PRIVATE
     ${MICROPY_PORT_DIR}
     ${CMAKE_CURRENT_BINARY_DIR}
 )
+
+target_include_directories(${MICROPY_TARGET} PRIVATE ${WIN_SDK_INCLUDE_DIR})
 
 #zephyr_library_compile_options(
 #    -std=gnu99 -fomit-frame-pointer
