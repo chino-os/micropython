@@ -37,6 +37,8 @@
 // Python internal features
 #define MICROPY_ERROR_REPORTING                 (MICROPY_ERROR_REPORTING_NONE)
 
+#define MICROPY_USE_INTERNAL_PRINTF             (0)
+
 // Type definitions for the specific machine
 
 typedef intptr_t mp_int_t; // must be pointer size

@@ -109,3 +109,9 @@ include(${MICROPY_DIR}/py/mkrules.cmake)
 #)
 #
 #target_link_libraries(app PRIVATE ${MICROPY_TARGET})
+
+install(TARGETS ${MICROPY_TARGET}
+        COMPONENT chino.shell
+        RUNTIME DESTINATION bin
+        LIBRARY DESTINATION lib
+        )
